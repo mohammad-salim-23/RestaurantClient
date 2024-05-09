@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext/AuthProvider";
-import icon from "../images/icon.jpg"
+import icon from "../images/Yummy.jpg"
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 const Navbar = () => {
@@ -15,12 +15,12 @@ const Navbar = () => {
     };
          const navLinks = (
             <>
-            <li ><Link to="/">Home</Link></li>
-            <li ><Link to="/gallery">Gallery</Link></li>
-          <li className="relative">
-          <span onClick={toggleDropdown} className="cursor-pointer">My Profile</span>
+            <li className="text-xl"><Link to="/">Home</Link></li>
+            <li className="text-xl"><Link to="/gallery">Gallery</Link></li>
+          <li className=" ">
+          <span onClick={toggleDropdown} className="cursor-pointer text-xl">My Profile</span>
             {showDropdown && (
-                 <div className="absolute top-full left-0 mt-1 w-52 bg-base-100 shadow rounded-md font-bold">
+                 <div className="absolute top-full left-0 mt-1 w-52  shadow rounded-md font-bold bg-white text-black ">
              <ul className="p-2">
              <li ><Link onClick={closeDropdown} to="/addFood">Add Food Item</Link></li>
                 <li onClick={closeDropdown}><Link to="/myFood">My Added Food</Link></li>
@@ -36,8 +36,6 @@ const Navbar = () => {
            
             </>
          )
-        
-
        
         useEffect(()=>{
             localStorage.setItem('theme',theme);
@@ -92,18 +90,18 @@ const Navbar = () => {
                 </div>
                 <ul
                   tabIndex={0}
-                  className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-bold"
+                  className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-bold text-black"
                 >
                   {navLinks}
                 </ul>
               </div>
               <div className="flex">
-                <img className="w-8 mt-3 md:w-10 md:h-10" src={icon} alt="" />
-                <a className="btn  text-xl">Yummy</a>
+                <img className=" hidden sm:block  mt-3 w-12 h-12 mr-5 mb-3" src={icon} alt="" />
+                <a className="font-bold text-black text-xl lg:text-2xl lg:mt-5 ml-2">Yummy</a>
               </div>
             </div>
             <div className="navbar-center hidden lg:flex">
-              <ul className="menu menu-horizontal px-1 font-bold">{navLinks}</ul>
+              <ul className="menu menu-horizontal px-1  font-bold">{navLinks}</ul>
             </div>
             <div>
               

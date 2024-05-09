@@ -3,12 +3,12 @@ import Swal from 'sweetalert2'
 import { Link,useLocation,useNavigate } from "react-router-dom";
 import { AuthContext } from "../components/AuthContext/AuthProvider";
 
-
+import { FaGoogle } from "react-icons/fa";
 const Login = () => {
     
         const location= useLocation();
     const navigate = useNavigate()
-    const {signInUser,googleSignIn,GithubSignIn} = useContext(AuthContext)
+    const {signInUser,googleSignIn} = useContext(AuthContext)
     
     const handleLogin=e=>{
     e.preventDefault();
@@ -26,7 +26,12 @@ const Login = () => {
             // navigate after login
             navigate(location?.state ? location.state:"/");
         }).catch((error)=>{
-            alert("again check your email and password")
+            Swal.fire({
+                title: 'Error!',
+                text: 'again check your email and password',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+              })
             console.error(error);
         })
        
@@ -44,24 +49,6 @@ const Login = () => {
             navigate(location?.state ? location.state:"/");
         })
         .catch(error=>{
-            alert("something wrong")
-        })
-       
-    }
-    const handleGithubLogin=e=>{
-        e.preventDefault();
-        GithubSignIn()
-        .then(()=>{
-          Swal.fire({
-            title: 'Success!',
-            text: 'Do you want to continue',
-            icon: 'success',
-            confirmButtonText: 'Cool'
-          })
-          navigate(location?.state ? location.state:"/");
-           
-        })
-        .catch(()=>{
             Swal.fire({
                 title: 'Error!',
                 text: 'Do you want to continue',
@@ -69,8 +56,9 @@ const Login = () => {
                 confirmButtonText: 'Cool'
               })
         })
-
+       
     }
+   
   return (
   <div>
    
@@ -115,8 +103,11 @@ const Login = () => {
               <div className="form-control mt-6">
           <button className="btn bg-[#249898] text-xl text-black">Login</button>
         </div>
-        <button className="btn bg-blue-400 mb-2" onClick={handlegoogleSignIn}>Google Login</button>
-        <button className="btn bg-slate-500" onClick={handleGithubLogin}>GitHub Login</button>
+       <div >
+       
+       <button className="btn btn-block bg-primaryColor mb-2" onClick={handlegoogleSignIn}><FaGoogle /> Google Login</button>
+       </div>
+      
             </div>
             </form>
             <p className="text-center mb-2">Do not have an account <Link className="text-blue-700 font-bold" to="/signup">Register</Link></p>
