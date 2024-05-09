@@ -43,7 +43,7 @@ const Navbar = () => {
               .catch();
           };
       return (
-        <div className='md:pl-5 md:pr-5'> {/* Apply dark mode class */}
+        <div className='md:pl-6 md:pr-6'> 
           <div className="navbar">
             <div className="navbar-start">
               <div className="dropdown">
@@ -76,7 +76,7 @@ const Navbar = () => {
               </div>
               <div className="flex">
                 <img className="w-8 mt-3 md:w-10 md:h-10" src={icon} alt="" />
-                <a className="btn btn-ghost text-xl">Yummy</a>
+                <a className="btn  text-xl">Yummy</a>
               </div>
             </div>
             <div className="navbar-center hidden lg:flex">
