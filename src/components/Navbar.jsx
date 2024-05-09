@@ -4,22 +4,41 @@ import icon from "../images/icon.jpg"
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 const Navbar = () => {
-    
+    const { user, logOut } = useContext(AuthContext);
+    const [theme, setTheme] = useState('light');
+    const [showDropdown,setShowDropdown] = useState(false);
+    const toggleDropdown = () =>{
+        setShowDropdown(!showDropdown);
+    }
+    const closeDropdown = () => {
+        setShowDropdown(false);
+    };
          const navLinks = (
             <>
             <li ><Link to="/">Home</Link></li>
             <li ><Link to="/gallery">Gallery</Link></li>
-            <li ><Link to="/addFood">Add Food Item</Link></li>
-            <li ><Link to="/myFood">My Added Food</Link></li>
-            <li ><Link to="/myOrderedFood">My Ordered Food</Link></li>
+          <li className="relative">
+          <span onClick={toggleDropdown} className="cursor-pointer">My Profile</span>
+            {showDropdown && (
+                 <div className="absolute top-full left-0 mt-1 w-52 bg-base-100 shadow rounded-md font-bold">
+             <ul className="p-2">
+             <li ><Link onClick={closeDropdown} to="/addFood">Add Food Item</Link></li>
+                <li onClick={closeDropdown}><Link to="/myFood">My Added Food</Link></li>
+                <li onClick={closeDropdown}><Link to="/myOrderedFood">My Ordered Food</Link></li>
+             </ul>
+              
+               </div>
+            )
+
+            }
+          </li>
            
            
             </>
          )
         
 
-        const { user, logOut } = useContext(AuthContext);
-        const [theme, setTheme] = useState('light');
+       
         useEffect(()=>{
             localStorage.setItem('theme',theme);
             const localTheme = localStorage.getItem('theme');
