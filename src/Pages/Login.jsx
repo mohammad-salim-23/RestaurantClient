@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import Swal from 'sweetalert2'
 import { Link,useLocation,useNavigate } from "react-router-dom";
-import { AuthContext } from "./AuthProvider";
+import { AuthContext } from "../components/AuthContext/AuthProvider";
+
 
 const Login = () => {
     

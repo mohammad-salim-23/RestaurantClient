@@ -2,10 +2,11 @@ import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from 'sweetalert2'
 import { Link,   useNavigate } from "react-router-dom";
+import { AuthContext } from "../components/AuthContext/AuthProvider";
 
 
 
-import { AuthContext } from "./AuthProvider";
+
 const SignUp = () => {
 
   const navigate = useNavigate();

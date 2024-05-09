@@ -7,9 +7,13 @@ const Navbar = () => {
     
          const navLinks = (
             <>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="">Home</Link></li>
-            <li><Link to="">Home</Link></li>
+            <li ><Link to="/">Home</Link></li>
+            <li ><Link to="/gallery">Gallery</Link></li>
+            <li ><Link to="/addFood">Add Food Item</Link></li>
+            <li ><Link to="/myFood">My Added Food</Link></li>
+            <li ><Link to="/myOrderedFood">My Ordered Food</Link></li>
+           
+           
             </>
          )
         
@@ -69,7 +73,7 @@ const Navbar = () => {
                 </div>
                 <ul
                   tabIndex={0}
-                  className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                  className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-bold"
                 >
                   {navLinks}
                 </ul>
@@ -80,7 +84,7 @@ const Navbar = () => {
               </div>
             </div>
             <div className="navbar-center hidden lg:flex">
-              <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+              <ul className="menu menu-horizontal px-1 font-bold">{navLinks}</ul>
             </div>
             <div>
               
