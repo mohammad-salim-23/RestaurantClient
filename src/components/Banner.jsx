@@ -8,8 +8,9 @@ const Banner = () => {
                 <img src="https://img.freepik.com/free-photo/restaurant-hall-with-red-brick-walls-wooden-tables-pipes-ceiling_140725-8504.jpg?w=740&t=st=1715330807~exp=1715331407~hmac=6efd2789b4afa50b839dffd8d77bc87e729e833c559872148600316f3cc88b8e" className="w-full lg:banner rounded-xl" />
                 <div className="absolute rounded-xl flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#2F4F4F] to-[rgba(220, 220, 220, 1)]">
                     <div className='text-white space-y-7 pl-12 w-1/2'>
+                        
                         <h2 className='text-3xl md:text-6xl font-bold'>Yummy: Discover Culinary Delights from Around the Globe</h2>
-                        <p>Embark on a gastronomic journey with TastyBites and explore a world of flavors through our curated selection of mouthwatering dishes and recipes.</p>
+                        <p className="text-xl md:text-2xl">WE ARE EXCITED TO COOK FOR YOU TODAY!</p>
                         <div>
                           <Link to="/allFoods"> <button className="btn bg-primaryColor btn-outline ">All Foods</button></Link>
                             
@@ -26,7 +27,7 @@ const Banner = () => {
                 <div className="absolute rounded-xl flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#2F4F4F] to-[rgba(220, 220, 220, 1)]">
                     <div className='text-white space-y-7 pl-12 w-1/2'>
                     <h2 className='text-3xl md:text-6xlfont-bold'>Yummy: Discover Culinary Delights from Around the Globe</h2>
-                        <p>Embark on a gastronomic journey with TastyBites and explore a world of flavors through our curated selection of mouthwatering dishes and recipes.</p>
+                        <p>WE ARE EXCITED TO COOK FOR YOU TODAY!</p>
                         <div>
                           <Link to="/allFoods"> <button className="btn bg-primaryColor btn-outline">All Foods</button></Link>
                         </div>
@@ -42,7 +43,7 @@ const Banner = () => {
                 <div className="absolute rounded-xl flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#2F4F4F] to-[rgba(220, 220, 220, 1)]">
                     <div className='text-white space-y-7 pl-12 w-1/2'>
                     <h2 className='text-3xl md:text-6xl font-bold'>Yummy: Discover Culinary Delights from Around the Globe</h2>
-                        <p>Embark on a gastronomic journey with TastyBites and explore a world of flavors through our curated selection of mouthwatering dishes and recipes.</p>
+                        <p>WE ARE EXCITED TO COOK FOR YOU TODAY!</p>
                         <div>
                           <Link to="/allFoods"> <button className="btn bg-primaryColor btn-outline ">All Foods</button></Link>
                         </div>
@@ -58,7 +59,7 @@ const Banner = () => {
                 <div className="absolute rounded-xl flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#2F4F4F] to-[rgba(220, 220, 220, 1)]">
                     <div className='text-white space-y-7 pl-12 w-1/2'>
                     <h2 className='text-3xl md:text-6xl font-bold'>Yummy: Discover Culinary Delights from Around the Globe</h2>
-                        <p>Embark on a gastronomic journey with TastyBites and explore a world of flavors through our curated selection of mouthwatering dishes and recipes.</p>
+                        <p>WE ARE EXCITED TO COOK FOR YOU TODAY!</p>
                         <div>
                           <Link to="/allFoods"> <button className="btn bg-primaryColor btn-outline mr-5">All Foods</button></Link>
                         </div>

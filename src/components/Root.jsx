@@ -1,17 +1,19 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-
+import "./All.css"
 
 
 const Root = () => {
     return (
         <div>
-            <div className="bg-primaryColor text-white">
+            <div className="bg-primaryColor text-black navbarr">
             <Navbar></Navbar>
             </div>
-            <Outlet></Outlet>
+           <div className="mt-24">
+           <Outlet></Outlet>
             <Footer></Footer>
+           </div>
         </div>
     );
 };

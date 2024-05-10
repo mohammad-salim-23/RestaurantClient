@@ -15,11 +15,11 @@ const Navbar = () => {
     };
          const navLinks = (
             <>
-            <li className="text-xl"><Link to="/">Home</Link></li>
-            <li className="text-xl"><Link to="/allFoods">ALL Foods</Link></li>
-            <li className="text-xl"><Link to="/gallery">Gallery</Link></li>
+            <li className="text-[18px]"><Link to="/">Home</Link></li>
+            <li className="text-[18px]"><Link to="/allFoods">ALL Foods</Link></li>
+            <li className="text-[18px]"><Link to="/gallery">Gallery</Link></li>
           <li className=" ">
-          <span onClick={toggleDropdown} className="cursor-pointer text-xl">My Profile</span>
+          <span onClick={toggleDropdown} className="cursor-pointer text-[18px]">My Profile</span>
             {showDropdown && (
                  <div className="absolute top-full left-0 mt-1 w-52  shadow rounded-md font-bold bg-black text-white ">
              <ul className="p-2">
@@ -98,7 +98,7 @@ const Navbar = () => {
               </div>
               <div className="flex">
                 <img className=" hidden sm:block  mt-3 w-12 h-12 mr-5 mb-3" src={icon} alt="" />
-                <a className="font-bold text-black text-xl lg:text-2xl lg:mt-5 ml-2">Yummy</a>
+                <a className="font-bold text-black text-xl lg:text-2xl lg:mt-5 ml-2 mt-6">Yummy</a>
               </div>
             </div>
             <div className="navbar-center hidden lg:flex">
