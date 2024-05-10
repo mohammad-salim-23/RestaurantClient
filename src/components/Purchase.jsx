@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "./AuthContext/AuthProvider";
-
+import Swal from 'sweetalert2/dist/sweetalert2.js'
 const Purchase = () => {
     const food = useLoaderData();
     const {_id} = food;
@@ -16,32 +16,56 @@ const Purchase = () => {
         const quantity = formData.get("quantity");
         const name = formData.get("name");
         const email = formData.get("email");
-        if(food.quantity===0){
-            <div className="alert alert-warning">
-            <span>This food item is not available</span>
-               </div>
+        if(parseInt(food.quantity)===0){
+            Swal.fire({
+                icon: "error",
+                title: "Sorry Sir!",
+                text: "This food item not available . ",
+                footer: '<a href="#">You try another one , Sir</a>'
+              });
                return;
         }
       else  if(quantity>food.quantity){
-            <div className="alert alert-warning">
-    <span>Food is not available in this quantity</span>
-       </div>
+        Swal.fire({
+            icon: "warning",
+            title: "Sorry Sir!",
+            text: "This quantity is not available",
+            footer: '<a href="#">You should decrease the quantity, and please do not worry, sir. Our food items have enough quantity, so you can easily share them with anyone.</a>'
+          });
        return;
         }
         else{
-            
+            Swal.fire({
+                icon:"success",
+                title: "Successfully Your work Saved",
+                showClass: {
+                  popup: `
+                    animate__animated
+                    animate__fadeInUp
+                    animate__faster
+                  `
+                },
+                hideClass: {
+                  popup: `
+                    animate__animated
+                    animate__fadeOutDown
+                    animate__faster
+                  `
+                }
+              });
+              console.log(foodname, price, quantity, name, email, currentDate);
+              const info = {foodname, price, quantity, name, email, currentDate};
+            fetch(`http://localhost:5000/food/${_id}`,{
+              method:"POST",
+              headers:{
+                  'content-type':'application/json'
+              },
+              body:JSON.stringify(info)
+            })
+            .then(res=>res.json())
+          .catch(error=>console.error('Error: ',error));
         }
-        console.log(foodname, price, quantity, name, email, currentDate);
-        const info = {foodname, price, quantity, name, email, currentDate};
-      fetch(`http://localhost:5000/food/${_id}`,{
-        method:"POST",
-        headers:{
-            'content-type':'application/json'
-        },
-        body:JSON.stringify(info)
-      })
-      .then(res=>res.json())
-    .catch(error=>console.error('Error: ',error));
+
     };
 
     return (
@@ -64,7 +88,7 @@ const Purchase = () => {
                         <label className="label">
                             <span className="label-text">Quantity</span>
                         </label>
-                        <input type="text" name="quantity" placeholder="Enter quantity" className="input input-bordered" />
+                        <input type="text" name="quantity" placeholder="Enter quantity" className="input input-bordered" required/>
                     </div>
                     <div className="form-control">
                         <label className="label">
