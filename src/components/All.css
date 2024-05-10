@@ -4,3 +4,8 @@
     object-fit:cover;
 
   }
+  .banner{
+    width:1180px;
+    height: 595px;
+    object-fit: cover;
+  }
