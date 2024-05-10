@@ -21,7 +21,7 @@ const Navbar = () => {
           <li className=" ">
           <span onClick={toggleDropdown} className="cursor-pointer text-xl">My Profile</span>
             {showDropdown && (
-                 <div className="absolute top-full left-0 mt-1 w-52  shadow rounded-md font-bold bg-white text-black ">
+                 <div className="absolute top-full left-0 mt-1 w-52  shadow rounded-md font-bold bg-black text-white ">
              <ul className="p-2">
              <li ><Link onClick={closeDropdown} to="/addFood">Add Food Item</Link></li>
                 <li onClick={closeDropdown}><Link to="/myFood">My Added Food</Link></li>
