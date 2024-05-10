@@ -99,7 +99,7 @@ const SignUp = () => {
                   required
                 />
               </div>
-              <div className="form-control">
+              
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
@@ -116,11 +116,11 @@ const SignUp = () => {
                     show? <FaEyeSlash/> : <FaEye/>
                   }
                 </span>
-              </div>
+             
                
               </div>
               <div className="form-control mt-6">
-                <button className="btn bg-primary font-bold">Register</button>
+                <button className="btn bg-primaryColor font-bold">Register</button>
               </div>
             </div>
             </form>
