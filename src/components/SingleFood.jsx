@@ -1,10 +1,11 @@
 
+import { Link } from "react-router-dom";
 import "./All.css"
 const SingleFood = ({food}) => {
-    const {name,image,category,price,quantity} = food;
+    const {name,image,category,price,quantity,_id} = food;
     return (
         <div>
-           <div className="card food={food} bg-base-100 shadow-xl">
+           <div className="card  bg-base-100 shadow-xl">
   <figure><img className="w-96 h-96 img-style
    " src={image} alt="Shoes" /></figure>
   <div className="card-body">
@@ -15,7 +16,10 @@ const SingleFood = ({food}) => {
 
     <div className="card-actions justify-end">
 
-      <button className="btn bg-primaryColor">Details</button>
+     <Link to={`/details/${_id}`}>
+        {" "}
+        <button className="btn bg-primaryColor">View Details</button>
+     </Link>
     </div>
   </div>
 </div> 
