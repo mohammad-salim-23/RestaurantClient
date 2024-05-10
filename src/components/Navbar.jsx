@@ -16,6 +16,7 @@ const Navbar = () => {
          const navLinks = (
             <>
             <li className="text-xl"><Link to="/">Home</Link></li>
+            <li className="text-xl"><Link to="/allFoods">ALL Foods</Link></li>
             <li className="text-xl"><Link to="/gallery">Gallery</Link></li>
           <li className=" ">
           <span onClick={toggleDropdown} className="cursor-pointer text-xl">My Profile</span>
@@ -139,7 +140,7 @@ const Navbar = () => {
                 <Link to="/signin">
                   <button
                     className="btn font-bold"
-                    style={{ backgroundColor: "#FF6347" }}
+                    style={{ backgroundColor: "#FFA500" }}
                   >
                     SignIn
                   </button>

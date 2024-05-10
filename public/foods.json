@@ -1,0 +1,122 @@
+[
+    {
+    "name": "Sushi Roll",
+    "image": "https://img.freepik.com/free-photo/sushi-rolls-with-soybean-sauce_140725-4254.jpg?t=st=1715312942~exp=1715316542~hmac=5ab2e7f1efcc331d4bc0a4111a3bde720a4df288f88bdf4181714c42ebc56dd0&w=740",
+    "category": "Japanese Cuisine",
+    "price": 12.99,
+    "made_by": "Chef Hiroshi",
+    "origin": "Japan",
+    "description": "A traditional Japanese dish consisting of vinegared rice, seafood, and vegetables rolled in seaweed. Varieties include California roll, spicy tuna roll, and salmon avocado roll.",
+    "quantity": 50
+    },
+    {
+    "name": "Spaghetti Carbonara",
+    "image": "https://img.freepik.com/free-photo/delicious-pasta-plate_23-2150690723.jpg?t=st=1715312976~exp=1715316576~hmac=bb40b16a8c5595bbdf94186d2e1315f1db2f6b690feb00d62858017f38d85b75&w=740",
+    "category": "Italian Cuisine",
+    "price": 15.50,
+    "made_by": "Chef Maria",
+    "origin": "Italy",
+    "description": "A classic Italian pasta dish made with spaghetti, eggs, pancetta, grated cheese, and black pepper. The creamy sauce is created by mixing eggs and cheese with hot pasta.",
+    "quantity": 30
+    },
+    {
+    "name": "Taco",
+    "image": "https://img.freepik.com/free-photo/fresh-beef-taco-wooden-table-with-sauce-generative-ai_188544-8042.jpg?t=st=1715313014~exp=1715316614~hmac=9e6f60a4bfd5e8828061e2ac7711c2d3046ab17ebe940f0167292da561489dee&w=740",
+    "category": "Mexican Cuisine",
+    "price": 8.99,
+    "made_by": "Chef Miguel",
+    "origin": "Mexico",
+    "description": "A Mexican dish consisting of a folded or rolled tortilla filled with various ingredients such as beef, chicken, pork, lettuce, cheese, and salsa.",
+    "quantity": 40
+    },
+    {
+    "name": "Croissant",
+    "image": "https://img.freepik.com/free-photo/orange-cake-with-dried-apricots-powdered-sugar_2829-6158.jpg?t=st=1715313046~exp=1715316646~hmac=5e9f4a4468e2217ff20995f035a1a4792a2747cf9a870f241ff3e7244def7194&w=740",
+    "category": "French Pastry",
+    "price": 3.50,
+    "made_by": "Baker Pierre",
+    "origin": "France",
+    "description": "A buttery, flaky pastry originating from France. Made with layers of yeast-leavened dough, butter, and rolled into a crescent shape.",
+    "quantity": 60
+    },
+    {
+    "name": "Hamburger",
+    "image": "https://img.freepik.com/free-photo/delicious-burger-with-many-ingredients-isolated-white-background-tasty-cheeseburger-splash-sauce_90220-1266.jpg?t=st=1715313107~exp=1715316707~hmac=d09a7a736bc339b25a27854364f01358968121253e9386216447da158b8e67da&w=740",
+    "category": "American Cuisine",
+    "price": 9.99,
+    "made_by": "Chef John",
+    "origin": "United States",
+    "description": "A classic American dish consisting of a grilled or fried ground meat patty, usually beef, served in a sliced bun with various toppings such as lettuce, tomato, onion, and cheese.",
+    "quantity": 35
+    },
+    {
+    "name": "Sushi Nigiri",
+    "image": "https://img.freepik.com/free-photo/sushi-rolls-hot-rolls-california-rolls_141793-1275.jpg?t=st=1715313159~exp=1715316759~hmac=8b7a251a659d009488ee7e611b21df3082e8ca5bfe56e956defd9b59cc16b866&w=360",
+    "category": "Japanese Cuisine",
+    "price": 2.50,
+    "made_by": "Chef Hiroshi",
+    "origin": "Japan",
+    "description": "Traditional Japanese sushi made with a slice of fresh fish served over a small mound of rice. Common types include tuna, salmon, and shrimp.",
+    "quantity": 45
+    },
+    {
+    "name": "Pad Thai",
+    "image": "https://img.freepik.com/free-photo/flat-lay-noodles-with-vegetables-chicken_23-2148377422.jpg?t=st=1715313187~exp=1715316787~hmac=1f23372ecef4ea03aee08da268b9068395be8d8b0595e75f33dee4e19818bd63&w=740",
+    "category": "Thai Cuisine",
+    "price": 11.99,
+    "made_by": "Chef Nong",
+    "origin": "Thailand",
+    "description": "A popular Thai stir-fried noodle dish made with rice noodles, eggs, tofu, shrimp, bean sprouts, peanuts, and flavored with tamarind sauce.",
+    "quantity": 25
+    },
+    {
+    "name": "Sushi Sashimi",
+    "image": "https://img.freepik.com/free-photo/sushi-plate-with-various-types-sushi_140725-4217.jpg?t=st=1715313242~exp=1715316842~hmac=0c7940cebbbc7b75e190f7eef1cac26adaaa361c940ead7b7c5fa0b040864163&w=360",
+    "category": "Japanese Cuisine",
+    "price": 18.99,
+    "made_by": "Chef Hiroshi",
+    "origin": "Japan",
+    "description": "Japanese delicacy consisting of thinly sliced fresh raw fish, served without rice. Common types include tuna, salmon, and yellowtail.",
+    "quantity": 20
+    },
+    {
+    "name": "Paella",
+    "image": "https://img.freepik.com/free-psd/valencian-paella-isolated-transparent-background_191095-27759.jpg?t=st=1715313272~exp=1715316872~hmac=cb0515de7275175bcdbe6f1e19bc65632de89470d42d1e4af0df33e517846452&w=740",
+    "category": "Spanish Cuisine",
+    "price": 20.99,
+    "made_by": "Chef Carmen",
+    "origin": "Spain",
+    "description": "A Spanish rice dish originally from Valencia, cooked with saffron, chicken, rabbit, seafood, and various vegetables.",
+    "quantity": 15
+    },
+    {
+    "name": "Miso Soup",
+    "image": "https://img.freepik.com/free-photo/front-view-chicken-soup-along-with-seasonings-dark-blue-background-soup-meat-food-dinner_140725-39587.jpg?t=st=1715313312~exp=1715316912~hmac=4b40bf530e5528f6457277e2298b4a23c36b9280e55689cb8f6cabe95f048269&w=740",
+    "category": "Japanese Cuisine",
+    "price": 4.99,
+    "made_by": "Chef Hiroshi",
+    "origin": "Japan",
+    "description": "A traditional Japanese soup made with dashi stock, miso paste, tofu, seaweed, and green onions. It is usually served as a starter.",
+    "quantity": 55
+    },
+    {
+    "name": "Peking Duck",
+    "image": "https://img.freepik.com/free-photo/top-view-traditional-asian-food-peking-duck-with-cucumbers-sauce-plate_141793-8524.jpg?t=st=1715313378~exp=1715316978~hmac=a6054ded21f434cc57293567d4c8a42fcf636587d6b9c6a9d8707886e452d908&w=360",
+    "category": "Chinese Cuisine",
+    "price": 28.99,
+    "made_by": "Chef Li",
+    "origin": "China",
+    "description": "A famous Chinese dish originating from Beijing, made with roasted duck, served with pancakes, hoisin sauce, cucumber, and green onions.",
+    "quantity": 18
+    },
+    {
+    "name": "Gelato",
+    "image": "https://img.freepik.com/premium-photo/delicious-waffle-with-whipped-cream-berries_806675-22.jpg?w=740",
+    "category": "Italian Dessert",
+    "price": 6.99,
+    "made_by": "Gelato Master Luigi",
+    "origin": "Italy",
+    "description": "Italian ice cream made with milk, sugar, and various flavorings. It has a denser and creamier texture than traditional ice cream.",
+    "quantity": 50
+    }
+    ]
