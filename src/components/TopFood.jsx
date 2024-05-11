@@ -36,6 +36,11 @@ const TopFood = ({foods}) => {
                     
                 )
             }
+            <div className="card-actions justify-center">
+          <Link to="/allFoods">
+          <button className="btn bg-orange-400 btn-outline  text-center flex font-bold">See More...</button>
+          </Link>
+            </div>
         </div>
     );
 };
