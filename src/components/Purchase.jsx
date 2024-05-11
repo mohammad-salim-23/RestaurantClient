@@ -25,7 +25,7 @@ const Purchase = () => {
               });
                return;
         }
-      else  if(quantity>food.quantity){
+      else  if(parseInt(quantity)>parseInt(food.quantity)){
         Swal.fire({
             icon: "warning",
             title: "Sorry Sir!",
