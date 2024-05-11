@@ -164,7 +164,7 @@ const AddFoodItem = () => {
               name="name"
               value={user.displayName}
               className="input input-bordered"
-              readOnly
+            
             />
           </div>
           <div className="form-control">

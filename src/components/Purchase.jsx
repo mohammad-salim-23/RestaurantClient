@@ -94,7 +94,7 @@ const Purchase = () => {
                         <label className="label">
                             <span className="label-text">User Name</span>
                         </label>
-                        <input type="text" name="name" value={user.displayName} className="input input-bordered" readOnly />
+                        <input type="text" name="name" value={user.displayName} className="input input-bordered" />
                     </div>
                     <div className="form-control">
                         <label className="label">

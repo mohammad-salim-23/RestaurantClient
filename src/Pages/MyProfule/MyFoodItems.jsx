@@ -18,7 +18,7 @@ const MyFoodItems = () => {
   // <div key={index}>
   console.log(foods);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  justify-center max-w-6xl m-auto">
       {foods.map((food, index) => (
         <div key={index}>
           <div className="max-w-xs rounded-md shadow-md dark:bg-gray-50 dark:text-gray-800">

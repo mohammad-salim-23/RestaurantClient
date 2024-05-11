@@ -22,7 +22,13 @@ const handleUpdateFood=e=>{
     const updateFood = {
         name,image,price,category,made_by,origin,description,quantity,email
     }
-    fetch(`http://localhost:5000/food/${food._id} `)
+    fetch(`http://localhost:5000/food/${food._id}`,{
+        method:"PUT",
+        headers:{
+            "content-type":"application/json"
+        },
+        body:JSON.stringify(updateFood)
+    })
     .then((res)=>res.json())
     .then((data)=>{
         if(data.modifiedCount>0){
@@ -164,7 +170,7 @@ const handleUpdateFood=e=>{
               readOnly
             />
           </div>
-          <input className="btn bg-orange-400 btn-outline" type="submit" value="Add Item" />
+          <input className="btn bg-orange-400 btn-outline" type="submit" value="Update Item" />
         </form>
       </div>
     </div>
