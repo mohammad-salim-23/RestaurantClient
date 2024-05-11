@@ -13,6 +13,7 @@ const Purchase = () => {
     const formData = new FormData(e.target);
     const foodname = formData.get("foodname");
     const price = formData.get("price");
+    const image = formData.get("photo");
     const quantity = formData.get("quantity");
     const name = formData.get("name");
     const email = formData.get("email");
@@ -52,8 +53,8 @@ const Purchase = () => {
                   `,
         },
       });
-      console.log(foodname, price, quantity, name, email, currentDate);
-      const info = { foodname, price, quantity, name, email, currentDate };
+      console.log(foodname, price, quantity, name, email, currentDate,image);
+      const info = { foodname, price, quantity, name, email, currentDate,image };
       fetch(`http://localhost:5000/food/${_id}`, {
         method: "POST",
         headers: {
@@ -107,13 +108,26 @@ const Purchase = () => {
             />
           </div>
           <div className="form-control">
+         <label className="label">
+                <span className="label-text">Photo URL</span>
+              </label>
+              <input
+                type="text"
+                name="photo"
+                value={food.image}
+                placeholder="Photo"
+                className="input input-bordered"
+                required
+              />
+         </div>
+          <div className="form-control">
             <label className="label">
               <span className="label-text">User Name</span>
             </label>
             <input
               type="text"
               name="name"
-              value={user.displayName}
+              value={user.displayName }
               className="input input-bordered"
             />
           </div>
