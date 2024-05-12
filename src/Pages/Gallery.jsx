@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../components/AuthContext/AuthProvider";
 import Swal from 'sweetalert2';
 
 const Gallery = () => {
+    const navigate = useNavigate();
   const [feedback, setFeedback] = useState([]);
   const { user } = useContext(AuthContext);
   const [selectedGalleryIndex, setSelectedGalleryIndex] = useState(null);
@@ -59,18 +60,19 @@ const Gallery = () => {
         setFeedback(data);
       });
   }, [feedback]);
+ 
 
   return (
     <div>
-      <div className="ml-52">
+      <div className="md:ml-52 md:flex">
         <img
-          className="flex justify-center w-[550px] "
-          src="https://img.freepik.com/free-photo/feedback-interaction-review-response-word_53876-134052.jpg?t=st=1715513291~exp=1715516891~hmac=a58896aae24fe44dc71bf9ce3e90cd64ca980e399a6068e8f4463f1d679fde4f&w=826"
+          className="flex justify-center md:h-[405px]"
+          src="https://img.freepik.com/premium-photo/young-asian-indian-student-cartoon-character_113255-10356.jpg?w=740"
           alt=""
         />
         {user ? (
           <button
-            className="btn  btn-outline mt-3 mb-3 bg-primaryColor ml-20"
+            className="btn   btn-outline  mb-3 bg-primaryColor ml-20 md:mt-80 w-36 h-10"
             onClick={handleOpenModal}
           >
             Add Feedback
@@ -87,7 +89,7 @@ const Gallery = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {feedback.map((feedback, index) => (
           <div
-            className="relative w-96 h-[305px]"
+            className="relative w-96 "
             key={index}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}

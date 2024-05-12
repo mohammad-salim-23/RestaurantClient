@@ -41,6 +41,7 @@ const Login = () => {
         e.preventDefault();
         googleSignIn()
             .then(result => {
+                console.log(result);
                 Swal.fire({
                     title: 'Success!',
                     text: 'Successfully logged in with Google',

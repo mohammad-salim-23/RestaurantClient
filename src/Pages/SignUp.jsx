@@ -18,10 +18,10 @@ const SignUp = () => {
     console.log(e.currentTarget);
     const form = new FormData(e.currentTarget);
     const name = form.get("name");
-    const photo = form.get("photo");
+    const photoURL = form.get("photo");
     const email = form.get("email");
     const password = form.get("password");
-    console.log(name, photo, email, password);
+    console.log(name, photoURL, email, password);
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).*$/;
     if(password.length<6 ){
         Swal.fire({
