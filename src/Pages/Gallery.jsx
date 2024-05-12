@@ -1,118 +1,167 @@
-import { useContext, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../components/AuthContext/AuthProvider";
+import Swal from 'sweetalert2';
 
 const Gallery = () => {
-  const gallerys = useLoaderData();
+  const [feedback, setFeedback] = useState([]);
   const { user } = useContext(AuthContext);
   const [selectedGalleryIndex, setSelectedGalleryIndex] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
-  const handleOpenModal = (index) => {
-    setSelectedGalleryIndex(index);
+  const handleOpenModal = () => {
+    setSelectedGalleryIndex(true);
   };
 
   const handleCloseModal = () => {
-    setSelectedGalleryIndex(null);
+    setSelectedGalleryIndex(false);
   };
-  const handleFeedback = (e, galleryId) => {
+
+  const handleFeedback = (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const image = form.photo.value;
     const feedback = form.feedback.value;
-    const newFeedback={
-        name,image,feedback
-    }
+    const email = form.email.value;
+    const newFeedback = {
+      name,
+      image,
+      feedback,
+      email
+    };
 
-    fetch(`http://localhost:5000/feedback`,{
-        method:"POST",
-        headers:{
-            "content-type":"application/json"
-        },
-        body:JSON.stringify({
-            galleryId,
-            newFeedback
-        })
-    }).then(res=>res.json())
-    .then(data=>{
-        console.log(data);
+    fetch(`http://localhost:5000/feedback`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(newFeedback)
     })
-    console.log(name);
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+      if (data.insertedId) {
+        Swal.fire({
+          title: "Good job!",
+          text: "Feedback added successfully!",
+          icon: "success"
+        });
+        handleCloseModal(); 
+      }
+    });
   };
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/feedback`)
+      .then((res) => res.json())
+      .then((data) => {
+        setFeedback(data);
+      });
+  }, [feedback]);
+
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3">
-      {gallerys.map((gallery, index) => (
-        <div key={index}>
-          <img src={gallery.image} alt="" />
-          <div>
-            {user ? (
-              <button className="btn" onClick={() => handleOpenModal(index)}>
-                Add Feedback
-              </button>
-            ) : (
-              <Link to="/signin">
-                <button>Add Feedback</button>
-              </Link>
+    <div>
+      <div className="ml-52">
+        <img
+          className="flex justify-center w-[550px] "
+          src="https://img.freepik.com/free-photo/feedback-interaction-review-response-word_53876-134052.jpg?t=st=1715513291~exp=1715516891~hmac=a58896aae24fe44dc71bf9ce3e90cd64ca980e399a6068e8f4463f1d679fde4f&w=826"
+          alt=""
+        />
+        {user ? (
+          <button
+            className="btn  btn-outline mt-3 mb-3 bg-primaryColor ml-20"
+            onClick={handleOpenModal}
+          >
+            Add Feedback
+          </button>
+        ) : (
+          <Link to="/signin">
+            <button className="btn btn-outline mt-3 mb-3 bg-primaryColor ml-20">
+              Add Feedback
+            </button>
+          </Link>
+        )}
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {feedback.map((feedback, index) => (
+          <div
+            className="relative w-96 h-[305px]"
+            key={index}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            <img src={feedback.image} alt="" />
+            {hoveredIndex === index && (
+              <div className="absolute top-0 left-0 bg-gray-900 bg-opacity-80 text-white p-2">
+                {feedback.name && <p>Name: {feedback.name}</p>}
+                {feedback.email && <p>Email: {feedback.email}</p>}
+                {feedback.feedback && <p>Feedback: {feedback.feedback}</p>}
+              </div>
             )}
           </div>
-          {user && selectedGalleryIndex === index && (
-            <dialog
-              open={selectedGalleryIndex !== null}
-              id={`modal_${index}`}
-              className="modal"
-            >
-              <div className="modal-box">
-                <form
-                  onSubmit={(e) => handleFeedback(e, gallery._id)}
-                  method="dialog"
-                >
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">User Name</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={user?.displayName}
-                      className="input input-bordered"
-                      readOnly
-                    />
-                  </div>
-                  <div className="form-control">
-                    <label className="label">
-                      <span className="label-text">Experience</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="feedback"
-                      className="input input-bordered"
-                    />
-                    <label className="label">
-                      <span className="label-text">Photo URL</span>
-                    </label>
-                    <input
-                      type="text"
-                      name="photo"
-                      className="input input-bordered"
-                    />
-                    <input className="btn" type="submit" value="Add" />
-                  </div>
-                  <button
-                    className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-                    onClick={handleCloseModal}
-                  >
-                    ✕
-                  </button>
-                </form>
-                <h3 className="font-bold text-lg">Hello!</h3>
-                <p className="py-4">
-                  Press ESC key or click on ✕ button to close
-                </p>
+        ))}
+      </div>
+
+      {user && selectedGalleryIndex && (
+        <dialog open={selectedGalleryIndex} className="modal">
+          <div className="modal-box">
+            <form onSubmit={handleFeedback} method="dialog">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">User Name</span>
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={user?.displayName}
+                  className="input input-bordered"
+                 
+                />
+                <label className="label">
+                  <span className="label-text">User Email</span>
+                </label>
+                <input
+                  type="text"
+                  name="email"
+                  value={user?.email}
+                  className="input input-bordered"
+                  readOnly
+                />
               </div>
-            </dialog>
-          )}
-        </div>
-      ))}
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Experience</span>
+                </label>
+                <input
+                  type="text"
+                  name="feedback"
+                  className="input input-bordered"
+                />
+                <label className="label">
+                  <span className="label-text">Photo URL</span>
+                </label>
+                <input
+                  type="text"
+                  name="photo"
+                  className="input input-bordered"
+                />
+                <input className="btn" type="submit" value="Add" />
+              </div>
+              <button
+                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+                onClick={handleCloseModal}
+              >
+                ✕
+              </button>
+            </form>
+            <p className="py-4">
+              Press ESC key or click on ✕ button to close
+            </p>
+          </div>
+        </dialog>
+      )}
     </div>
   );
 };
