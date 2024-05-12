@@ -55,7 +55,7 @@ const Purchase = () => {
       });
       console.log(foodname, price, quantity, name, email, currentDate,image);
       const info = { foodname, price, quantity, name, email, currentDate,image };
-      fetch(`http://localhost:5000/food/${_id}`, {
+      fetch(`http://localhost:5000/purchase/${_id}`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

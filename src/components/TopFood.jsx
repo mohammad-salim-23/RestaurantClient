@@ -5,8 +5,7 @@ const TopFood = ({foods}) => {
     console.log(foods);
    
     // sorting the foods array based on purchaseQuantity in descending order
-    foods.sort((a,b)=>b.
-    purchaseQuantity-a.purchaseQuantity);
+    foods.sort((a,b)=>b.purchaseQuantity-a.purchaseQuantity);
 
     const topFoods = foods.slice(0,6);
     const {name,image,category,price,quantity,_id} = topFoods;
