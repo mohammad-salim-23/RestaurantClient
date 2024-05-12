@@ -14,11 +14,31 @@ const Gallery = () => {
   const handleCloseModal = () => {
     setSelectedGalleryIndex(null);
   };
- const handleFeedback = (galleryId)=>{
+  const handleFeedback = (e, galleryId) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
+    const image = form.photo.value;
+    const feedback = form.feedback.value;
+    const newFeedback={
+        name,image,feedback
+    }
 
- }
+    fetch(`http://localhost:5000/feedback`,{
+        method:"POST",
+        headers:{
+            "content-type":"application/json"
+        },
+        body:JSON.stringify({
+            galleryId,
+            newFeedback
+        })
+    }).then(res=>res.json())
+    .then(data=>{
+        console.log(data);
+    })
+    console.log(name);
+  };
   return (
     <div className="grid grid-cols-2 md:grid-cols-3">
       {gallerys.map((gallery, index) => (
@@ -26,10 +46,7 @@ const Gallery = () => {
           <img src={gallery.image} alt="" />
           <div>
             {user ? (
-              <button
-                className="btn"
-                onClick={() => handleOpenModal(index)}
-              >
+              <button className="btn" onClick={() => handleOpenModal(index)}>
                 Add Feedback
               </button>
             ) : (
@@ -45,14 +62,17 @@ const Gallery = () => {
               className="modal"
             >
               <div className="modal-box">
-                <form onSubmit={()=>handleFeedback(gallery._id)} method="dialog">
+                <form
+                  onSubmit={(e) => handleFeedback(e, gallery._id)}
+                  method="dialog"
+                >
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">User Name</span>
                     </label>
                     <input
                       type="text"
-                      name="foodname"
+                      name="name"
                       value={user?.displayName}
                       className="input input-bordered"
                       readOnly
@@ -67,6 +87,15 @@ const Gallery = () => {
                       name="feedback"
                       className="input input-bordered"
                     />
+                    <label className="label">
+                      <span className="label-text">Photo URL</span>
+                    </label>
+                    <input
+                      type="text"
+                      name="photo"
+                      className="input input-bordered"
+                    />
+                    <input className="btn" type="submit" value="Add" />
                   </div>
                   <button
                     className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
