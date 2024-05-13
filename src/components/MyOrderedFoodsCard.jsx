@@ -1,8 +1,9 @@
+import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 const MyOrderedFoodsCard = ({ order, orders, setOrder }) => {
-    console.log(order)
+  console.log(order);
   const handleDelete = (_id) => {
-    console.log(_id)
+    console.log(_id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -13,14 +14,16 @@ const MyOrderedFoodsCard = ({ order, orders, setOrder }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/purchase/${_id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://assignment-11-server-side-lake.vercel.app/purchase/${_id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
-            console.log("response ",data);
+            console.log("response ", data);
             if (data.deletedCount > 0) {
-             
               Swal.fire({
                 title: "Deleted!",
                 text: "Your file has been deleted.",
@@ -33,9 +36,13 @@ const MyOrderedFoodsCard = ({ order, orders, setOrder }) => {
       }
     });
   };
-  const {_id} = order;
+  const { _id } = order;
   return (
     <div>
+      <Helmet>
+        <title>Yummy | MyOrder</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <div>
         <div className="card card-side bg-base-100 shadow-xl h-96">
           <figure>

@@ -55,11 +55,12 @@ const Purchase = () => {
       });
       console.log(foodname, price, quantity, name, email, currentDate,image);
       const info = { foodname, price, quantity, name, email, currentDate,image };
-      fetch(`http://localhost:5000/purchase/${_id}`, {
+      fetch(`https://assignment-11-server-side-lake.vercel.app/purchase/${_id}`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
         },
+        credentials:'include',
         body: JSON.stringify(info),
       })
         .then((res) => res.json())

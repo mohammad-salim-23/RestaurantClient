@@ -3,6 +3,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Swal from 'sweetalert2'
 import { Link,   useNavigate } from "react-router-dom";
 import { AuthContext } from "../components/AuthContext/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -58,8 +59,11 @@ const SignUp = () => {
   };
   return (
     <div>
-     
-     
+      
+      <Helmet>
+        <title>Yummy | SignUp</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
         <div className="hero-content flex-col ">
           <div className="text-center ">
             <h1 className="text-5xl font-bold">Please Register</h1>
