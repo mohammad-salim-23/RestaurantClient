@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../components/AuthContext/AuthProvider";
 
 import { FaGoogle } from "react-icons/fa";
+import axios from "axios";
 
 const Login = () => {
     const location = useLocation();
@@ -18,13 +19,26 @@ const Login = () => {
 
         signInUser(email, password)
             .then(result => {
+
+               
+                // navigate(location?.state ? location.state : "/");
+                const logedInUser = result.user;
+                console.log(logedInUser)
+                const user = {email};
+                // get access token
+                axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+                .then(res=>{
+                    console.log(res.data);
+                    if(res.data.success){
+                        navigate(location?.state ? location.state : "/");
+                    }
+                })
                 Swal.fire({
                     title: 'Success!',
                     text: 'Successfully logged in',
                     icon: 'success',
                     confirmButtonText: 'Cool'
                 });
-                navigate(location?.state ? location.state : "/");
             })
             .catch(error => {
                 Swal.fire({

@@ -3,7 +3,7 @@ import Marquee from "react-fast-marquee";
 const SpecialDrinks = () => {
     return (
         <div >
-            <h2 className="text-3xl font-bold text-center mt-4">Our Special Drinks</h2>
+            <h2 className="text-3xl font-bold text-center mt-4">Our Special <span className="text-red-600">Drinks</span> </h2>
          <div>
          <Marquee direction="right" >
             <div className="h-60 mt-5 mb-5 flex ">
