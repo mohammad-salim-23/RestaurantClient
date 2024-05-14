@@ -36,7 +36,7 @@ const Gallery = () => {
       email,
     };
 
-    fetch(`http://localhost:5000/feedback`, {
+    fetch(`https://assignment-11-server-side-lake.vercel.app/feedback`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -58,7 +58,7 @@ const Gallery = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/feedback`)
+    fetch(`https://assignment-11-server-side-lake.vercel.app/feedback`)
       .then((res) => res.json())
       .then((data) => {
         setFeedback(data);

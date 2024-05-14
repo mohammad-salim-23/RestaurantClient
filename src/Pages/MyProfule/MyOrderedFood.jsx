@@ -8,7 +8,9 @@ const MyOrderedFood = () => {
   const [orders, setOrder] = useState([]);
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/myPurchase/${user?.email}`)
+      fetch(
+        `https://assignment-11-server-side-lake.vercel.app/myPurchase/${user?.email}`
+      )
         .then((res) => res.json())
         .then((data) => {
           setOrder(data);

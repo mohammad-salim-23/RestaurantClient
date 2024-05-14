@@ -8,9 +8,12 @@ const MyFoodItems = () => {
   const [foods, setFoods] = useState([]);
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/myfood/${user?.email}`, {
-        credentials: "include",
-      })
+      fetch(
+        `https://assignment-11-server-side-lake.vercel.app/myfood/${user?.email}`,
+        {
+          credentials: "include",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setFoods(data);

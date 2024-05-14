@@ -62,7 +62,7 @@ const Navbar = () => {
         const user = res?.user;
         axios
           .post(
-            "http://localhost:5000/logout",
+            "https://assignment-11-server-side-lake.vercel.app/logout",
             { email: user?.email },
             { withCredentials: true }
           )

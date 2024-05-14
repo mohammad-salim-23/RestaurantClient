@@ -30,13 +30,16 @@ const UpdateFood = () => {
       quantity,
       email,
     };
-    fetch(`http://localhost:5000/food/${food._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateFood),
-    })
+    fetch(
+      `https://assignment-11-server-side-lake.vercel.app/food/${food._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateFood),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {

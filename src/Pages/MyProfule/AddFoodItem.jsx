@@ -31,7 +31,7 @@ const AddFoodItem = () => {
       purchaseQuantity,
     };
     console.log(newFood);
-    fetch(`http://localhost:5000/food`, {
+    fetch(`https://assignment-11-server-side-lake.vercel.app/food`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

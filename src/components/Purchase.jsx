@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "./AuthContext/AuthProvider";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import { Helmet } from "react-helmet-async";
-import "./All.css"
+import "./All.css";
 const Purchase = () => {
   const food = useLoaderData();
   const { _id } = food;
@@ -65,14 +65,17 @@ const Purchase = () => {
         currentDate,
         image,
       };
-      fetch(`http://localhost:5000/purchase/${_id}`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-      
-        body: JSON.stringify(info),
-      })
+      fetch(
+        `https://assignment-11-server-side-lake.vercel.app/purchase/${_id}`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+
+          body: JSON.stringify(info),
+        }
+      )
         .then((res) => res.json())
         .catch((error) => console.error("Error: ", error));
     }
@@ -84,97 +87,97 @@ const Purchase = () => {
         <title>Yummy | purchase</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
-   
-    <div className="flex justify-center background-container">
-      <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-        <form onSubmit={handlePurchase} className="card-body">
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Food Name</span>
-            </label>
-            <input
-              type="text"
-              name="foodname"
-              value={food.name}
-              className="input input-bordered"
-              readOnly
-            />
-          </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Price</span>
-            </label>
-            <input
-              type="text"
-              name="price"
-              value={food.price}
-              className="input input-bordered"
-              readOnly
-            />
-          </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Quantity</span>
-            </label>
-            <input
-              type="text"
-              name="quantity"
-              placeholder="Enter quantity"
-              className="input input-bordered"
-              required
-            />
-          </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Photo URL</span>
-            </label>
-            <input
-              type="text"
-              name="photo"
-              value={food.image}
-              placeholder="Photo"
-              className="input input-bordered"
-              required
-            />
-          </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">User Name</span>
-            </label>
-            <input
-              type="text"
-              name="name"
-              value={user.displayName}
-              className="input input-bordered"
-            />
-          </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">User Email</span>
-            </label>
-            <input
-              type="text"
-              name="email"
-              value={user.email}
-              className="input input-bordered"
-              readOnly
-            />
-          </div>
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Purchase Date</span>
-            </label>
-            <input
-              type="text"
-              value={currentDate}
-              className="input input-bordered"
-              readOnly
-            />
-          </div>
-          <input className="btn btn-outline" type="submit" value="Purchase" />
-        </form>
+
+      <div className="flex justify-center background-container">
+        <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+          <form onSubmit={handlePurchase} className="card-body">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Food Name</span>
+              </label>
+              <input
+                type="text"
+                name="foodname"
+                value={food.name}
+                className="input input-bordered"
+                readOnly
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Price</span>
+              </label>
+              <input
+                type="text"
+                name="price"
+                value={food.price}
+                className="input input-bordered"
+                readOnly
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Quantity</span>
+              </label>
+              <input
+                type="text"
+                name="quantity"
+                placeholder="Enter quantity"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Photo URL</span>
+              </label>
+              <input
+                type="text"
+                name="photo"
+                value={food.image}
+                placeholder="Photo"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">User Name</span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                value={user.displayName}
+                className="input input-bordered"
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">User Email</span>
+              </label>
+              <input
+                type="text"
+                name="email"
+                value={user.email}
+                className="input input-bordered"
+                readOnly
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Purchase Date</span>
+              </label>
+              <input
+                type="text"
+                value={currentDate}
+                className="input input-bordered"
+                readOnly
+              />
+            </div>
+            <input className="btn btn-outline" type="submit" value="Purchase" />
+          </form>
+        </div>
       </div>
-    </div>
     </>
   );
 };
