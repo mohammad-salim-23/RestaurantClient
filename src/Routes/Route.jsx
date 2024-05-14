@@ -22,22 +22,18 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () =>
-          fetch(`https://assignment-11-server-side-lake.vercel.app/food`),
+        loader: () => fetch(`http://localhost:5000/food`),
       },
       {
         path: "/allFoods",
         element: <AllFoods></AllFoods>,
-        loader: () =>
-          fetch(`https://assignment-11-server-side-lake.vercel.app/food`),
+        loader: () => fetch(`http://localhost:5000/food`),
       },
       {
         path: "/details/:id",
         element: <FoodDetails></FoodDetails>,
         loader: ({ params }) =>
-          fetch(
-            `https://assignment-11-server-side-lake.vercel.app/food/${params.id}`
-          ),
+          fetch(`http://localhost:5000/food/${params.id}`),
       },
       {
         path: "/purchase/:id",
@@ -47,15 +43,12 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://assignment-11-server-side-lake.vercel.app/food/${params.id}`
-          ),
+          fetch(`http://localhost:5000/food/${params.id}`),
       },
       {
         path: "/gallery",
         element: <Gallery></Gallery>,
-        loader: () =>
-          fetch(`https://assignment-11-server-side-lake.vercel.app/food`),
+        loader: () => fetch(`http://localhost:5000/food`),
       },
       {
         path: "/signin",
@@ -93,9 +86,7 @@ const router = createBrowserRouter([
         path: "/updateFood/:id",
         element: <UpdateFood></UpdateFood>,
         loader: ({ params }) =>
-          fetch(
-            `https://assignment-11-server-side-lake.vercel.app/food/${params.id}`
-          ),
+          fetch(`http://localhost:5000/food/${params.id}`),
       },
     ],
   },

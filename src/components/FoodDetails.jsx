@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link, useLoaderData } from "react-router-dom";
 
 
@@ -14,6 +15,10 @@ const FoodDetails = () => {
     const {name,image,category,price,quantity,_id,made_by,origin,description} = food;
     return (
         <div>
+            <Helmet>
+        <title>Yummy | FoodDetails</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
             <div className="hero min-h-screen bg-base-200 p-5">
   <div className="hero-content flex-col lg:flex-row-reverse">
     <img src={image} className="md:max-w-lg rounded-lg shadow-2xl" />

@@ -14,12 +14,9 @@ const MyOrderedFoodsCard = ({ order, orders, setOrder }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `https://assignment-11-server-side-lake.vercel.app/purchase/${_id}`,
-          {
-            method: "DELETE",
-          }
-        )
+        fetch(`http://localhost:5000/purchase/${_id}`, {
+          method: "DELETE",
+        })
           .then((res) => res.json())
           .then((data) => {
             console.log("response ", data);

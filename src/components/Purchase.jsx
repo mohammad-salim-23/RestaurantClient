@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "./AuthContext/AuthProvider";
 import Swal from "sweetalert2/dist/sweetalert2.js";
+import { Helmet } from "react-helmet-async";
+import "./All.css"
 const Purchase = () => {
   const food = useLoaderData();
   const { _id } = food;
@@ -53,14 +55,22 @@ const Purchase = () => {
                   `,
         },
       });
-      console.log(foodname, price, quantity, name, email, currentDate,image);
-      const info = { foodname, price, quantity, name, email, currentDate,image };
-      fetch(`https://assignment-11-server-side-lake.vercel.app/purchase/${_id}`, {
+      console.log(foodname, price, quantity, name, email, currentDate, image);
+      const info = {
+        foodname,
+        price,
+        quantity,
+        name,
+        email,
+        currentDate,
+        image,
+      };
+      fetch(`http://localhost:5000/purchase/${_id}`, {
         method: "POST",
         headers: {
           "content-type": "application/json",
         },
-        credentials:'include',
+      
         body: JSON.stringify(info),
       })
         .then((res) => res.json())
@@ -69,7 +79,13 @@ const Purchase = () => {
   };
 
   return (
-    <div className="flex justify-center">
+    <>
+      <Helmet>
+        <title>Yummy | purchase</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
+   
+    <div className="flex justify-center background-container">
       <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
         <form onSubmit={handlePurchase} className="card-body">
           <div className="form-control">
@@ -109,18 +125,18 @@ const Purchase = () => {
             />
           </div>
           <div className="form-control">
-         <label className="label">
-                <span className="label-text">Photo URL</span>
-              </label>
-              <input
-                type="text"
-                name="photo"
-                value={food.image}
-                placeholder="Photo"
-                className="input input-bordered"
-                required
-              />
-         </div>
+            <label className="label">
+              <span className="label-text">Photo URL</span>
+            </label>
+            <input
+              type="text"
+              name="photo"
+              value={food.image}
+              placeholder="Photo"
+              className="input input-bordered"
+              required
+            />
+          </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">User Name</span>
@@ -128,7 +144,7 @@ const Purchase = () => {
             <input
               type="text"
               name="name"
-              value={user.displayName }
+              value={user.displayName}
               className="input input-bordered"
             />
           </div>
@@ -159,6 +175,7 @@ const Purchase = () => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

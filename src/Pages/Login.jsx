@@ -36,7 +36,7 @@ const Login = () => {
         const user = { email };
         // get access token
         axios
-          .post("https://assignment-11-server-side-lake.vercel.app/jwt", user, {
+          .post("http://localhost:5000/jwt", user, {
             withCredentials: true,
           })
           .then((res) => {
@@ -73,13 +73,9 @@ const Login = () => {
 
         // get access token
         axios
-          .post(
-            "https://assignment-11-server-side-lake.vercel.app/jwt",
-            logedInUser.email,
-            {
-              withCredentials: true,
-            }
-          )
+          .post("http://localhost:5000/jwt", logedInUser.email, {
+            withCredentials: true,
+          })
           .then((res) => {
             console.log(res.data);
             if (res.data.success) {

@@ -19,4 +19,9 @@
     z-index: 1000; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
+  .background-container{
+    background-image: url("https://img.freepik.com/free-photo/fresh-colourful-ingredients-mexican-cuisine_23-2148254294.jpg?t=st=1715674630~exp=1715678230~hmac=cffb2f9dd31bde8d0ffd06a7dd91c7c4f4806c806deefa78a0133497a6f29b82&w=826");
+    background-size: cover;
+    background-position: center;
+  }
   
