@@ -15,7 +15,7 @@ const MeetChef = () => {
   </div>
          </div>
          <div className="card w-80 bg-base-100 shadow-xl h-[400px] object-cover">
-  <figure><img src="https://img.freepik.com/premium-photo/women-chef-making-cooking_746565-15211.jpg?w=360" alt="Shoes" /></figure>
+  <figure><img src="https://img.freepik.com/free-photo/portrait-beautiful-young-girl-holding-cooking-pan_23-2148465718.jpg?t=st=1719591698~exp=1719595298~hmac=2262bd846ebae68425287c2498fc2e405dbf4be0546bfcb22e85ca1079ffcc85&w=740" alt="Shoes" /></figure>
   <div className="card-body">
     <h2 className="card-title">Alia Bhatt</h2>
     <p className="font-semibold">experience: 10+ years</p>
