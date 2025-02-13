@@ -8,22 +8,19 @@ import icon from "../images/RestaurantLogo.jpeg";
 const Navbar = () => {
   const navigate = useNavigate();
   const { user, logOut } = useContext(AuthContext);
-  const [userInfo, setUserInfo] = useState(null); // Database theke user data store korbo
+  const [userInfo, setUserInfo] = useState(null);
+  const [isOpen, setIsOpen] = useState(false); // Dropdown open/close state
 
-  // Backend theke user data fetch kora
   useEffect(() => {
     if (user?.email) {
       axios
         .get(`https://restaurent-server-sigma.vercel.app/user/${user.email}`, { withCredentials: true })
         .then((res) => {
-          setUserInfo(res.data); // User data state e save
+          setUserInfo(res.data);
         })
         .catch((error) => console.error("User fetch error:", error));
     }
   }, [user?.email]);
-
-  // console.log("Auth User:", user);
-  // console.log("Database User Info:", userInfo);
 
   const handleLogOut = () => {
     logOut()
@@ -47,7 +44,7 @@ const Navbar = () => {
           icon: "success",
         });
 
-        setUserInfo(null); // Logout er por userInfo clear korte hobe
+        setUserInfo(null);
       })
       .catch((error) => console.error(error));
   };
@@ -57,7 +54,12 @@ const Navbar = () => {
       <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost md:hidden lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost md:hidden lg:hidden"
+              onClick={() => setIsOpen(!isOpen)}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -73,18 +75,22 @@ const Navbar = () => {
                 />
               </svg>
             </div>
-            <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-none bg-white rounded-box w-52 font-bold text-black">
-              <li><Link to="/">Home</Link></li>
-              <li><Link to="/allFoods">All Foods</Link></li>
-              <li><Link to="/aboutUs">About Us</Link></li>
-            {userInfo?.role === "admin" && (
-              <li><Link to="/admin">Admin</Link></li>
+            {isOpen && (
+              <ul
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-none bg-white rounded-box w-52 font-bold text-black"
+              >
+                <li onClick={() => setIsOpen(false)}><Link to="/">Home</Link></li>
+                <li onClick={() => setIsOpen(false)}><Link to="/allFoods">All Foods</Link></li>
+                <li onClick={() => setIsOpen(false)}><Link to="/aboutUs">About Us</Link></li>
+                {userInfo?.role === "admin" && (
+                  <li onClick={() => setIsOpen(false)}><Link to="/admin">Admin</Link></li>
+                )}
+              </ul>
             )}
-            </ul>
           </div>
           <div className="flex">
             <img className="sm:block mt-3 w-12 h-12 mr-5 mb-3" src={icon} alt="Logo" />
-            <span className="hidden md:visible font-bold text-black text-xl lg:text-2xl lg:mt-5 ml-2 mt-6">Royal Crown</span>
+            <span className="hidden md:block font-bold text-black text-xl lg:text-2xl lg:mt-5 ml-2 mt-6">Royal Crown</span>
           </div>
         </div>
         <div className="navbar-center hidden md:flex lg:flex">

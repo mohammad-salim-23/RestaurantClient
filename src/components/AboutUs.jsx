@@ -4,8 +4,12 @@ const AboutUs = () => {
   return (
     <div className="bg-gray-50">
       {/* Hero Section */}
+      <div className="mb-4">
+      <h2 className="font-semibold text-3xl flex justify-center mb-3">About Us</h2>
+      <h2 className="mb-3">At Royal Crown Cafe & Restaurant, we believe in serving freshly prepared, home-style dishes in a warm and inviting atmosphere. Our commitment to quality ensures that every meal is a delightful experience</h2>
+      </div>
       <section
-  className="relative w-full min-h-[70vh] lg:min-h-[90vh] flex items-center justify-center text-center text-white"
+  className="relative w-full min-h-[70vh] lg:min-h-[90vh] flex items-center justify-center text-center text-white mb-4"
 >
   {/* Background Image */}
   <div

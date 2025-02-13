@@ -51,7 +51,7 @@ const Login = () => {
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
 
-      <div className="flex flex-col md:flex-row h-full justify-center items-center">
+      <div className="flex flex-col  h-full justify-center items-center">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold">Login with Google</h1>
         </div>

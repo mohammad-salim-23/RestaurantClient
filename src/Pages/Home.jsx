@@ -19,10 +19,9 @@ const Home = () => {
       </Helmet>
         <div className="space-y-7">
            <Banner></Banner>
-          <div className="mt-4">
-            <h2 className="font-semibold text-3xl flex justify-center mb-4">About Us</h2>
+         
           <AboutUs ></AboutUs>
-          </div>
+         
            {/* <MeetChef></MeetChef> */}
            <ContactUs></ContactUs>
            <FeaturedFoods></FeaturedFoods>
