@@ -7,7 +7,7 @@ import "./All.css"
 const Root = () => {
     return (
         <div>
-            <div className="bg-primaryColor text-black navbarr">
+            <div className="bg-neutral text-black navbarr">
             <Navbar></Navbar>
             </div>
            <div className="mt-24">

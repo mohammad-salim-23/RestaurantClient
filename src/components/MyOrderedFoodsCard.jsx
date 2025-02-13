@@ -40,7 +40,7 @@ const MyOrderedFoodsCard = ({ order, orders, setOrder }) => {
   return (
     <div>
       <Helmet>
-        <title>Yummy | MyOrder</title>
+        <title>RoyalCrown | MyOrder</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
       <div>

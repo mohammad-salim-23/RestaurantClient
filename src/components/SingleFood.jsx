@@ -12,7 +12,7 @@ const SingleFood = ({food}) => {
     <h2 className="card-title">{name}</h2>
        <p className="font-medium">category: {category}</p>
        <p className="font-medium">quantity: {quantity}</p>
-       <p className="font-bold">price: {price}$</p>
+       <p className="font-bold">price: {price}</p>
 
     <div className="card-actions justify-end">
 

@@ -1,26 +1,37 @@
-import { useLoaderData } from "react-router-dom";
+
 import SingleFood from "../components/SingleFood";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import "../components/All.css";
 
 const AllFoods = () => {
-  const foods = useLoaderData();
+const [foods, setFoods] = useState([]);
   const [searchFood, setSearchFood] = useState("");
 
-  const filterFoods = foods.filter((food) =>
+  useEffect(() => {
+    fetch("https://restaurent-server-sigma.vercel.app/food")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Fetched Foods:", data); // ✅ Check what is coming from backend
+        setFoods(data || []);
+      })
+      .catch((error) => console.error("Error fetching food data:", error));
+  }, []);
+  
+  console.log(foods);
+  const filterFoods = foods?.filter((food) =>
     food.name.toLowerCase().includes(searchFood.toLowerCase())
   );
 
   return (
     <>
       <Helmet>
-        <title>Yummy | All Food</title>
+        <title>RoyalCrown | All Food</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
       
       <div className="background-container h-64 flex flex-col justify-center items-center">
-        <p className="text-center font-bold text-3xl mt-5">Yummy | All Food</p>
+        <p className="text-center font-bold text-3xl mt-5">RoyalCrown | All Food</p>
       </div>
 
       <div className="">

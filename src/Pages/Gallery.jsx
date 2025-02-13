@@ -68,7 +68,7 @@ const Gallery = () => {
   return (
     <div>
       <Helmet>
-        <title>Yummy | Gallery</title>
+        <title>RoyalCrown | Gallery</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
       <div className="md:ml-52 md:flex">

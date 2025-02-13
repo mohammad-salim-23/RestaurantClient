@@ -84,7 +84,7 @@ const Purchase = () => {
   return (
     <>
       <Helmet>
-        <title>Yummy | purchase</title>
+        <title>RoyalCrown | purchase</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
 

@@ -26,7 +26,7 @@ const MyFoodItems = () => {
   return (
     <>
       <Helmet>
-        <title>Yummy | MyAddedFood</title>
+        <title>RoyalCrown | MyAddedFood</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  justify-center max-w-6xl m-auto">

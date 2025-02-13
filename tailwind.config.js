@@ -7,8 +7,11 @@ export default {
 
   theme: {
     extend: {
-      colors:{
-       primaryColor:"rgb(219, 168, 150);"
+      colors: {
+         primaryColor:"#FFC107" ,  // Navy Blue (Background/Main theme color)
+        secondary: "#0C1446", // Gold/Yellow (Luxury & highlights)
+        accent: "#D32F2F",  // Red (Attention-grabbing elements)
+        neutral: "#FFFFFF", // White (For contrast and readability)
       },
     },
   },
@@ -16,4 +19,3 @@ export default {
     require('daisyui'),
   ],
 }
-

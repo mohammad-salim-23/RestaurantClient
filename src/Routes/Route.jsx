@@ -3,16 +3,14 @@ import Root from "../components/Root";
 import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home";
 import AllFoods from "../Pages/AllFoods";
-import Gallery from "../Pages/Gallery";
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
-import MyFoodItems from "../Pages/MyProfule/MyFoodItems";
-import MyOrderedFood from "../Pages/MyProfule/MyOrderedFood";
 import AddFoodItem from "../Pages/MyProfule/AddFoodItem";
 import FoodDetails from "../components/FoodDetails";
-import Purchase from "../components/Purchase";
 import PrivateRoute from "../components/Private/PrivateRoute";
 import UpdateFood from "../Pages/UpdateFood";
+import AboutUs from "../components/AboutUs";
+import Admin from "../Pages/Admin";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,39 +21,27 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
         loader: () =>
-          fetch(`https://assignment-11-server-side-lake.vercel.app/food`),
+          fetch(`https://restaurent-server-sigma.vercel.app`),
       },
       {
         path: "/allFoods",
         element: <AllFoods></AllFoods>,
         loader: () =>
-          fetch(`https://assignment-11-server-side-lake.vercel.app/food`),
+          fetch(`https://restaurent-server-sigma.vercel.app/food`),
       },
       {
         path: "/details/:id",
         element: <FoodDetails></FoodDetails>,
         loader: ({ params }) =>
           fetch(
-            `https://assignment-11-server-side-lake.vercel.app/food/${params.id}`
+            `https://restaurent-server-sigma.vercel.app/food/${params.id}`
           ),
       },
+      
       {
-        path: "/purchase/:id",
-        element: (
-          <PrivateRoute>
-            <Purchase></Purchase>
-          </PrivateRoute>
-        ),
-        loader: ({ params }) =>
-          fetch(
-            `https://assignment-11-server-side-lake.vercel.app/food/${params.id}`
-          ),
-      },
-      {
-        path: "/gallery",
-        element: <Gallery></Gallery>,
-        loader: () =>
-          fetch(`https://assignment-11-server-side-lake.vercel.app/food`),
+        path: "/aboutUs",
+        element: <AboutUs></AboutUs>,
+       
       },
       {
         path: "/signin",
@@ -65,28 +51,15 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <SignUp></SignUp>,
       },
-      {
-        path: "/myFood",
-        element: (
-          <PrivateRoute>
-            <MyFoodItems></MyFoodItems>
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/myOrderedFood",
-        element: (
-          <PrivateRoute>
-            <MyOrderedFood></MyOrderedFood>
-          </PrivateRoute>
-        ),
-      },
+      
       {
         path: "/addFood",
         element: (
-          <PrivateRoute>
-            <AddFoodItem></AddFoodItem>
-          </PrivateRoute>
+        
+           <PrivateRoute>
+             <AddFoodItem></AddFoodItem>
+           </PrivateRoute>
+       
         ),
       },
       {
@@ -94,9 +67,13 @@ const router = createBrowserRouter([
         element: <UpdateFood></UpdateFood>,
         loader: ({ params }) =>
           fetch(
-            `https://assignment-11-server-side-lake.vercel.app/food/${params.id}`
+            `https://restaurent-server-sigma.vercel.app/food/${params.id}`
           ),
       },
+      {
+        path:"/admin",
+        element:<Admin></Admin>
+      }
     ],
   },
 ]);
