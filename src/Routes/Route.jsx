@@ -21,20 +21,20 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
         loader: () =>
-          fetch(`https://restaurent-server-sigma.vercel.app`),
+          fetch(`https://api.royalcrowncafebd.com`),
       },
       {
         path: "/allFoods",
         element: <AllFoods></AllFoods>,
         loader: () =>
-          fetch(`https://restaurent-server-sigma.vercel.app/food`),
+          fetch(`https://api.royalcrowncafebd.com/food`),
       },
       {
         path: "/details/:id",
         element: <FoodDetails></FoodDetails>,
         loader: ({ params }) =>
           fetch(
-            `https://restaurent-server-sigma.vercel.app/food/${params.id}`
+            `https://api.royalcrowncafebd.com/food/${params.id}`
           ),
       },
       
@@ -67,7 +67,7 @@ const router = createBrowserRouter([
         element: <UpdateFood></UpdateFood>,
         loader: ({ params }) =>
           fetch(
-            `https://restaurent-server-sigma.vercel.app/food/${params.id}`
+            `https://api.royalcrowncafebd.com/food/${params.id}`
           ),
       },
       {

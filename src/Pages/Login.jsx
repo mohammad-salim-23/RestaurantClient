@@ -19,7 +19,7 @@ const Login = () => {
       console.log(loggedInUser);
 
       // Send user data to /users route
-      await axios.post("https://restaurent-server-sigma.vercel.app/users", {
+      await axios.post("https://api.royalcrowncafebd.com/users", {
         name: loggedInUser.displayName,
         email: loggedInUser.email,
         photoURL: loggedInUser.photoURL,

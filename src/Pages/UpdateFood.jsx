@@ -18,7 +18,7 @@ const UpdateFood = () => {
 
     const updateFood = { name, image, price, description };
 
-    fetch(`https://restaurent-server-sigma.vercel.app/food/${food.foods._id}`, {
+    fetch(`https://api.royalcrowncafebd.com/food/${food.foods._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

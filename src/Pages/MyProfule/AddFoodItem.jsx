@@ -17,7 +17,7 @@ const AddFoodItem = () => {
     const newFood = { name, image, price, description };
     console.log(newFood);
 
-    fetch("https://restaurent-server-sigma.vercel.app/food", {
+    fetch("https://api.royalcrowncafebd.com/food", {
       method: "POST",
       headers: {
         "content-type": "application/json",

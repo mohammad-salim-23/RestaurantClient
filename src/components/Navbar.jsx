@@ -14,7 +14,7 @@ const Navbar = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`https://restaurent-server-sigma.vercel.app/user/${user.email}`, { withCredentials: true })
+        .get(`https://api.royalcrowncafebd.com/user/${user.email}`, { withCredentials: true })
         .then((res) => {
           setUserInfo(res.data);
         })
@@ -27,7 +27,7 @@ const Navbar = () => {
       .then(() => {
         axios
           .post(
-            "https://restaurent-server-sigma.vercel.app/logout",
+            "https://api.royalcrowncafebd.com/logout",
             { email: user?.email },
             { withCredentials: true }
           )

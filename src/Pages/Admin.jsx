@@ -7,7 +7,7 @@ const Admin = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("https://restaurent-server-sigma.vercel.app/food")
+    fetch("https://api.royalcrowncafebd.com/food")
       .then((res) => res.json())
       .then((data) => {
         console.log("Fetched Foods:", data); // ✅ Check what is coming from backend
@@ -28,7 +28,7 @@ const Admin = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://restaurent-server-sigma.vercel.app/food/${id}`, {
+        fetch(`https://api.royalcrowncafebd.com/food/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
