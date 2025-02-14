@@ -16,15 +16,21 @@ const Login = () => {
     try {
       const result = await googleSignIn();
       const loggedInUser = result.user;
-      console.log(loggedInUser);
+      console.log("Google Sign-In User:", loggedInUser);
 
-      // Check if user exists in database
-      const { data } = await axios.get(
-        `https://api.royalcrowncafebd.com/user/${loggedInUser.email}`
-      );
+      let userExists = false;
+      try {
+        const { data } = await axios.get(
+          `https://api.royalcrowncafebd.com/user/${loggedInUser.email}`
+        );
+        userExists = !!data;
+      } catch (error) {
+        if (error.response?.status !== 404) {
+          throw error; // Ignore 404, throw other errors
+        }
+      }
 
-      if (!data) {
-        // If user doesn't exist, add to database
+      if (!userExists) {
         await axios.post("https://api.royalcrowncafebd.com/users", {
           name: loggedInUser.displayName,
           email: loggedInUser.email,
@@ -40,15 +46,22 @@ const Login = () => {
         confirmButtonText: "Cool",
       });
 
-      navigate(location?.state ? location.state : "/");
+      // Handle popup window closure issue
+      if (window.opener) {
+        window.opener.postMessage("closeGooglePopup", "*");
+        window.close();
+      } else {
+        navigate(location?.state ? location.state : "/");
+      }
     } catch (error) {
+      console.error("Google Sign-In Error:", error);
+
       Swal.fire({
         title: "Error!",
-        text: "Failed to sign in with Google",
+        text: error.response?.data?.message || "Failed to sign in with Google",
         icon: "error",
-        confirmButtonText: "Cool",
+        confirmButtonText: "OK",
       });
-      console.error(error);
     }
   };
 
@@ -64,7 +77,7 @@ const Login = () => {
         </div>
         <div className="card max-w-sm w-full">
           <button
-            className="btn btn-block bg-primaryColor mb-2"
+            className="btn btn-block bg-primaryColor mb-2 flex items-center justify-center"
             onClick={handleGoogleSignIn}
           >
             <FaGoogle className="mr-2" /> Google Login
