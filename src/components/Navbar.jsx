@@ -21,7 +21,7 @@ const Navbar = () => {
         .catch((error) => console.error("User fetch error:", error));
     }
   }, [user?.email]);
-
+console.log(userInfo);
   const handleLogOut = () => {
     logOut()
       .then(() => {
