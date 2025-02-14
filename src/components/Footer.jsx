@@ -12,7 +12,7 @@ const Footer = () => {
           <img className="w-16 h-16" src={icon} alt="Royal Crown Logo" />
           <p>
             <span className="font-bold text-lg">RoyalCrown Cafe & Restaurant </span> <br />
-            Delighting taste buds since 2024
+            Delighting taste buds since 2018
           </p>
         </aside>
 
