@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Swal from "sweetalert2";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../components/AuthContext/AuthProvider";
 import { FaGoogle } from "react-icons/fa";
 import axios from "axios";
@@ -18,13 +18,21 @@ const Login = () => {
       const loggedInUser = result.user;
       console.log(loggedInUser);
 
-      // Send user data to /users route
-      await axios.post("https://api.royalcrowncafebd.com/users", {
-        name: loggedInUser.displayName,
-        email: loggedInUser.email,
-        photoURL: loggedInUser.photoURL,
-      });
+      // Check if user exists in database
+      const { data } = await axios.get(
+        `https://api.royalcrowncafebd.com/user/${loggedInUser.email}`
+      );
 
+      if (!data) {
+        // If user doesn't exist, add to database
+        await axios.post("https://api.royalcrowncafebd.com/users", {
+          name: loggedInUser.displayName,
+          email: loggedInUser.email,
+          photoURL: loggedInUser.photoURL,
+        });
+      }
+
+      // Show success message
       Swal.fire({
         title: "Success!",
         text: "Successfully logged in",
@@ -48,10 +56,9 @@ const Login = () => {
     <>
       <Helmet>
         <title>RoyalCrown | LogIn</title>
-        <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
 
-      <div className="flex flex-col  h-full justify-center items-center">
+      <div className="flex flex-col h-full justify-center items-center">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold">Login with Google</h1>
         </div>
