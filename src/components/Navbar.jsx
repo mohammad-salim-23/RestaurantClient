@@ -8,6 +8,7 @@ import icon from "../images/RestaurantLogo.jpeg";
 const Navbar = () => {
   const navigate = useNavigate();
   const { user, logOut } = useContext(AuthContext);
+  console.log(user);
   const [userInfo, setUserInfo] = useState(null);
   const [isOpen, setIsOpen] = useState(false); // Dropdown open/close state
 
