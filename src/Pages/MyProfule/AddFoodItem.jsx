@@ -1,33 +1,58 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../components/AuthContext/AuthProvider";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import { Helmet } from "react-helmet-async";
 
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
 const AddFoodItem = () => {
   const { user } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
 
-  const handleAddFood = (e) => {
+  const handleAddFood = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    
     const form = e.target;
     const name = form.foodname.value;
-    const image = form.photo.value;
     const price = form.price.value;
     const description = form.description.value;
+    const imageFile = form.photo.files[0];
 
-    const newFood = { name, image, price, description };
-    console.log(newFood);
+    if (!imageFile) {
+      Swal.fire("Error", "Please select an image file", "error");
+      setLoading(false);
+      return;
+    }
 
-    fetch("https://api.royalcrowncafebd.com/food", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify(newFood),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+    // Upload Image to ImgBB
+    const formData = new FormData();
+    formData.append("image", imageFile);
+
+    try {
+      const imgUploadRes = await fetch(image_hosting_api, {
+        method: "POST",
+        body: formData,
+      });
+
+      const imgData = await imgUploadRes.json();
+      if (imgData.success) {
+        const imageUrl = imgData.data.url;
+
+        // Create new food item
+        const newFood = { name, image: imageUrl, price, description };
+
+        const res = await fetch("https://api.royalcrowncafebd.com/food", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(newFood),
+        });
+
+        const data = await res.json();
         if (data.insertedId) {
           Swal.fire({
             title: "Success!",
@@ -38,7 +63,15 @@ const AddFoodItem = () => {
             form.reset();
           });
         }
-      });
+      } else {
+        Swal.fire("Error", "Image upload failed", "error");
+      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      Swal.fire("Error", "Something went wrong!", "error");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -71,9 +104,9 @@ const AddFoodItem = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Photo URL</span>
+                  <span className="label-text">Photo</span>
                 </label>
-                <input type="text" name="photo" className="input input-bordered" required />
+                <input type="file" name="photo" className="file-input file-input-bordered" required />
               </div>
               <div className="form-control">
                 <label className="label">
@@ -81,7 +114,9 @@ const AddFoodItem = () => {
                 </label>
                 <input type="text" name="description" className="input input-bordered" required />
               </div>
-              <input className="btn bg-orange-400 btn-outline" type="submit" value="Add Item" />
+              <button className="btn bg-orange-400 btn-outline" type="submit" disabled={loading}>
+                {loading ? "Uploading..." : "Add Item"}
+              </button>
             </form>
           </div>
         </div>
