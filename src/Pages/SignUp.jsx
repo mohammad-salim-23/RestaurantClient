@@ -39,7 +39,7 @@ const SignUp = () => {
       const newUser = { name, photoURL, email };
 
       // Send user data to backend (MongoDB)
-      const response = await fetch("https://api.royalcrowncafebd.com/users", {
+      const response = await fetch("https://www.royalcrowncafebd.com/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newUser),

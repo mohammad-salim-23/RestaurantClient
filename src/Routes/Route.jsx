@@ -11,6 +11,7 @@ import PrivateRoute from "../components/Private/PrivateRoute";
 import UpdateFood from "../Pages/UpdateFood";
 import AboutUs from "../components/AboutUs";
 import Admin from "../Pages/Admin";
+import Employee from "../Pages/Employee/Employee";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,20 +22,20 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
         loader: () =>
-          fetch(`https://api.royalcrowncafebd.com`),
+          fetch(`https://www.royalcrowncafebd.com`),
       },
       {
         path: "/allFoods",
         element: <AllFoods></AllFoods>,
         loader: () =>
-          fetch(`https://api.royalcrowncafebd.com/food`),
+          fetch(`https://www.royalcrowncafebd.com/food`),
       },
       {
         path: "/details/:id",
         element: <FoodDetails></FoodDetails>,
         loader: ({ params }) =>
           fetch(
-            `https://api.royalcrowncafebd.com/food/${params.id}`
+            `https://www.royalcrowncafebd.com/food/${params.id}`
           ),
       },
       
@@ -67,12 +68,16 @@ const router = createBrowserRouter([
         element: <UpdateFood></UpdateFood>,
         loader: ({ params }) =>
           fetch(
-            `https://api.royalcrowncafebd.com/food/${params.id}`
+            `https://www.royalcrowncafebd.com/food/${params.id}`
           ),
       },
       {
         path:"/admin",
         element:<Admin></Admin>
+      },
+      {
+        path:"/employee",
+        element: <Employee></Employee>
       }
     ],
   },

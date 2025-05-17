@@ -16,29 +16,25 @@ const Login = () => {
     try {
       const result = await googleSignIn();
       const loggedInUser = result.user;
-      console.log("Google Sign-In User:", loggedInUser);
 
       let userExists = false;
       try {
         const { data } = await axios.get(
-          `https://api.royalcrowncafebd.com/user/${loggedInUser.email}`
+          `https://www.royalcrowncafebd.com/user/${loggedInUser.email}`
         );
         userExists = !!data;
       } catch (error) {
-        if (error.response?.status !== 404) {
-          throw error; // Ignore 404, throw other errors
-        }
+        if (error.response?.status !== 404) throw error;
       }
 
       if (!userExists) {
-        await axios.post("https://api.royalcrowncafebd.com/users", {
+        await axios.post("https://www.royalcrowncafebd.com/users", {
           name: loggedInUser.displayName,
           email: loggedInUser.email,
           photoURL: loggedInUser.photoURL,
         });
       }
 
-      // Show success message
       Swal.fire({
         title: "Success!",
         text: "Successfully logged in",
@@ -46,7 +42,6 @@ const Login = () => {
         confirmButtonText: "Cool",
       });
 
-      // Handle popup window closure issue
       if (window.opener) {
         window.opener.postMessage("closeGooglePopup", "*");
         window.close();
@@ -55,7 +50,6 @@ const Login = () => {
       }
     } catch (error) {
       console.error("Google Sign-In Error:", error);
-
       Swal.fire({
         title: "Error!",
         text: error.response?.data?.message || "Failed to sign in with Google",
@@ -71,16 +65,22 @@ const Login = () => {
         <title>RoyalCrown | LogIn</title>
       </Helmet>
 
-      <div className="flex flex-col h-full justify-center items-center">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold">Login with Google</h1>
-        </div>
-        <div className="card max-w-sm w-full">
+      <div className="flex min-h-screen items-center justify-center bg-gray-100 px-4 py-12">
+        <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-lg text-center">
+          <img
+            src="https://i.pinimg.com/736x/db/e5/71/dbe5711b4c1979d7a4f5e168092167d6.jpg" // You can replace this with your own image
+            alt="Login Illustration"
+            className="mx-auto mb-6 w-40 h-40 object-contain"
+          />
+          <h2 className="text-3xl font-semibold mb-6 text-gray-800">
+            Welcome Back
+          </h2>
           <button
-            className="btn btn-block bg-primaryColor mb-2 flex items-center justify-center"
             onClick={handleGoogleSignIn}
+            className="btn w-full bg-primaryColor hover:bg-primaryColor/90 text-white font-semibold py-3 rounded-lg flex items-center justify-center gap-3 text-lg transition"
           >
-            <FaGoogle className="mr-2" /> Google Login
+            <FaGoogle className="text-xl" />
+            Login with Google
           </button>
         </div>
       </div>

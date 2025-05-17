@@ -9,7 +9,7 @@ const [foods, setFoods] = useState([]);
   const [searchFood, setSearchFood] = useState("");
 
   useEffect(() => {
-    fetch("https://api.royalcrowncafebd.com/food")
+    fetch("https://www.royalcrowncafebd.com/food")
       .then((res) => res.json())
       .then((data) => {
         console.log("Fetched Foods:", data); // ✅ Check what is coming from backend

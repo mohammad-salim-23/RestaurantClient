@@ -62,12 +62,12 @@ const Footer = () => {
         <div className="flex flex-col items-center md:items-end text-center md:text-right">
           <p className="text-grenn-600 text-sm font-bold text-left">Powered by</p>
           <a
-            href="https://www.facebook.com/share/1B1ABpVhUY/"
+            href="https://www.facebook.com/profile.php?id=61574763806089"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2"
           >
-            <img src="https://i.ibb.co.com/BYXBZwX/Whats-App-Image-2025-02-13-at-6-19-15-PM.jpg" alt="DeshytechBD Logo" className="w-20 h-auto" />
+            <img src="https://i.ibb.co/wvfrM7m/Innobizz.jpg" alt="InnoBiz" className="w-20 h-auto" />
           </a>
         </div>
       </footer>

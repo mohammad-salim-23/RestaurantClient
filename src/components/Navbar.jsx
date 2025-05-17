@@ -15,7 +15,7 @@ const Navbar = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`https://api.royalcrowncafebd.com/user/${user.email}`, { withCredentials: true })
+        .get(`https://www.royalcrowncafebd.com/user/${user.email}`, { withCredentials: true })
         .then((res) => {
           setUserInfo(res.data);
         })
@@ -28,7 +28,7 @@ console.log(userInfo);
       .then(() => {
         axios
           .post(
-            "https://api.royalcrowncafebd.com/logout",
+            "https://www.royalcrowncafebd.com/logout",
             { email: user?.email },
             { withCredentials: true }
           )
@@ -86,11 +86,14 @@ console.log(userInfo);
                 {userInfo?.role === "admin" && (
                   <li onClick={() => setIsOpen(false)}><Link to="/admin">Admin</Link></li>
                 )}
+                  {userInfo?.role === "admin" && (
+                  <li onClick={() => setIsOpen(false)}><Link to="/employee">Employee</Link></li>
+                )}
               </ul>
             )}
           </div>
           <div className="flex">
-            <img className="sm:block mt-3 w-12 h-12 mr-5 mb-3" src={icon} alt="Logo" />
+           <Link to="/"> <img className="sm:block mt-3 w-12 h-12 mr-5 mb-3" src={icon} alt="Logo" /></Link>
             <span className="hidden md:block font-bold text-black text-xl lg:text-2xl lg:mt-5 ml-2 mt-6">Royal Crown</span>
           </div>
         </div>
@@ -100,7 +103,10 @@ console.log(userInfo);
             <li><Link to="/allFoods">All Foods</Link></li>
             <li><Link to="/aboutUs">About Us</Link></li>
             {userInfo?.role === "admin" && (
-              <li><Link to="/admin">Admin</Link></li>
+              <li><Link to="/admin">Add Food</Link></li>
+            )}
+             {userInfo?.role === "admin" && (
+              <li><Link to="/employee">Employee</Link></li>
             )}
           </ul>
         </div>
