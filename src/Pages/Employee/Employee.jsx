@@ -20,7 +20,7 @@ const Employee = () => {
   // Fetch all employees
   const fetchEmployees = async () => {
     try {
-      const res = await axios.get("https://www.royalcrowncafebd.com/employee");
+      const res = await axios.get("https://api.royalcrowncafebd.com/employee");
       setEmployees(res.data);
     } catch (err) {
       console.error("Failed to fetch employees", err);
@@ -64,7 +64,7 @@ const Employee = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://www.royalcrowncafebd.com/employee", formData);
+      const res = await axios.post("https://api.royalcrowncafebd.com/employee", formData);
       if (res.data.insertedId || res.data.acknowledged) {
         alert("Employee added successfully");
         setShowModal(false);
@@ -83,7 +83,7 @@ const Employee = () => {
     if (!confirmDelete) return;
 
     try {
-      const res = await axios.delete(`https://www.royalcrowncafebd.com/employee/${id}`);
+      const res = await axios.delete(`https://api.royalcrowncafebd.com/employee/${id}`);
       if (res.data.deletedCount > 0) {
         alert("Employee deleted");
         fetchEmployees();

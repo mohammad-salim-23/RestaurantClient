@@ -20,7 +20,7 @@ const Login = () => {
       let userExists = false;
       try {
         const { data } = await axios.get(
-          `https://www.royalcrowncafebd.com/user/${loggedInUser.email}`
+          `https://api.royalcrowncafebd.com/user/${loggedInUser.email}`
         );
         userExists = !!data;
       } catch (error) {
@@ -28,7 +28,7 @@ const Login = () => {
       }
 
       if (!userExists) {
-        await axios.post("https://www.royalcrowncafebd.com/users", {
+        await axios.post("https://api.royalcrowncafebd.com/users", {
           name: loggedInUser.displayName,
           email: loggedInUser.email,
           photoURL: loggedInUser.photoURL,

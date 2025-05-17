@@ -15,7 +15,7 @@ const Navbar = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`https://www.royalcrowncafebd.com/user/${user.email}`, { withCredentials: true })
+        .get(`https://api.royalcrowncafebd.com/user/${user.email}`, { withCredentials: true })
         .then((res) => {
           setUserInfo(res.data);
         })
@@ -28,7 +28,7 @@ console.log(userInfo);
       .then(() => {
         axios
           .post(
-            "https://www.royalcrowncafebd.com/logout",
+            "https://api.royalcrowncafebd.com/logout",
             { email: user?.email },
             { withCredentials: true }
           )

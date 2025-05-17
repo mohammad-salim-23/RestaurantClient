@@ -22,20 +22,20 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
         loader: () =>
-          fetch(`https://www.royalcrowncafebd.com`),
+          fetch(`https://api.royalcrowncafebd.com`),
       },
       {
         path: "/allFoods",
         element: <AllFoods></AllFoods>,
         loader: () =>
-          fetch(`https://www.royalcrowncafebd.com/food`),
+          fetch(`https://api.royalcrowncafebd.com/food`),
       },
       {
         path: "/details/:id",
         element: <FoodDetails></FoodDetails>,
         loader: ({ params }) =>
           fetch(
-            `https://www.royalcrowncafebd.com/food/${params.id}`
+            `https://api.royalcrowncafebd.com/food/${params.id}`
           ),
       },
       
@@ -68,7 +68,7 @@ const router = createBrowserRouter([
         element: <UpdateFood></UpdateFood>,
         loader: ({ params }) =>
           fetch(
-            `https://www.royalcrowncafebd.com/food/${params.id}`
+            `https://api.royalcrowncafebd.com/food/${params.id}`
           ),
       },
       {

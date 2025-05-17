@@ -43,7 +43,7 @@ const AddFoodItem = () => {
         // Create new food item
         const newFood = { name, image: imageUrl, price, description };
 
-        const res = await fetch("https://www.royalcrowncafebd.com/food", {
+        const res = await fetch("https://api.royalcrowncafebd.com/food", {
           method: "POST",
           headers: {
             "content-type": "application/json",
