@@ -12,6 +12,7 @@ import UpdateFood from "../Pages/UpdateFood";
 import AboutUs from "../components/AboutUs";
 import Admin from "../Pages/Admin";
 import Employee from "../Pages/Employee/Employee";
+import EmployeeAll from "../Pages/Employee/EmployeeAll";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
       {
         path:"/employee",
         element: <Employee></Employee>
+      },
+      {
+        path:"/employeeAll",
+        element:<EmployeeAll></EmployeeAll>
       }
     ],
   },

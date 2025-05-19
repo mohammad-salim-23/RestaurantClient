@@ -9,7 +9,8 @@ const Employee = () => {
     shift: "All",
     sector: "All",
   });
-
+const [shifts, setShifts] = useState([]);
+const [sectors, setSectors] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
     position: "",
@@ -17,11 +18,24 @@ const Employee = () => {
     sector: "Kitchen",
   });
 
+  const extractUniqueFilters = (data)=>{
+    const shiftSet = new Set();
+    const sectorset = new Set();
+    data.forEach((emp)=>{
+      shiftSet.add(emp.shift);
+      sectorset.add(emp.sector);
+    });
+
+    setShifts([...shiftSet]);
+    setSectors([...sectorset]);
+  }
+
   // Fetch all employees
   const fetchEmployees = async () => {
     try {
       const res = await axios.get("https://api.royalcrowncafebd.com/employee");
       setEmployees(res.data);
+      extractUniqueFilters(res.data);
     } catch (err) {
       console.error("Failed to fetch employees", err);
     }
@@ -115,8 +129,9 @@ const Employee = () => {
           className="border px-3 py-2 rounded"
         >
           <option value="All">All Shifts</option>
-          <option value="Morning">Morning</option>
-          <option value="Evening">Evening</option>
+           {shifts.map((s,idx)=>(
+             <option key={idx} value = {s}>{s}</option>
+           ))}
         </select>
         <select
           name="sector"
@@ -125,8 +140,9 @@ const Employee = () => {
           className="border px-3 py-2 rounded"
         >
           <option value="All">All Sectors</option>
-          <option value="Kitchen">Kitchen</option>
-          <option value="Service">Service</option>
+          {sectors.map((sec,idx)=>(
+            <option key={idx} value={sec}>{sec}</option>
+          ))}
         </select>
       </div>
 
@@ -187,24 +203,26 @@ const Employee = () => {
                 className="w-full border px-3 py-2 rounded"
                 required
               />
-              <select
-                name="shift"
-                value={formData.shift}
-                onChange={handleChange}
-                className="w-full border px-3 py-2 rounded"
-              >
-                <option value="Morning">Morning</option>
-                <option value="Evening">Evening</option>
-              </select>
-              <select
-                name="sector"
-                value={formData.sector}
-                onChange={handleChange}
-                className="w-full border px-3 py-2 rounded"
-              >
-                <option value="Kitchen">Kitchen</option>
-                <option value="Service">Service</option>
-              </select>
+         <input
+  type="text"
+  name="shift"
+  placeholder="Shift (e.g. Morning)"
+  value={formData.shift}
+  onChange={handleChange}
+  className="w-full border px-3 py-2 rounded"
+  required
+/>
+
+<input
+  type="text"
+  name="sector"
+  placeholder="Sector (e.g. Kitchen)"
+  value={formData.sector}
+  onChange={handleChange}
+  className="w-full border px-3 py-2 rounded"
+  required
+/>
+
 
               <div className="flex justify-end gap-2 pt-2">
                 <button

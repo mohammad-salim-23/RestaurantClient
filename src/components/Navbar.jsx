@@ -89,6 +89,7 @@ console.log(userInfo);
                   {userInfo?.role === "admin" && (
                   <li onClick={() => setIsOpen(false)}><Link to="/employee">Employee</Link></li>
                 )}
+                  <li onClick={() => setIsOpen(false)}><Link to="/employeeAll">Employee</Link></li>
               </ul>
             )}
           </div>
@@ -102,6 +103,7 @@ console.log(userInfo);
             <li><Link to="/">Home</Link></li>
             <li><Link to="/allFoods">All Foods</Link></li>
             <li><Link to="/aboutUs">About Us</Link></li>
+             <li><Link to="/employeeAll">Employee</Link></li>
             {userInfo?.role === "admin" && (
               <li><Link to="/admin">Add Food</Link></li>
             )}
